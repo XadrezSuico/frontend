@@ -38,6 +38,7 @@ export class PlayerRegistrationComponent implements OnInit, OnChanges {
   @Output()
   player_registered_event_emitter:EventEmitter<number> = new EventEmitter<number>();
 
+  default_singleton:DefaultSingleton;
   constructor(
     private player_sex_controller:PlayerSexController,
 
@@ -57,6 +58,7 @@ export class PlayerRegistrationComponent implements OnInit, OnChanges {
 
     // private pixel: PixelService
   ) {
+      this.default_singleton = DefaultSingleton.getInstance();
     // if(build_environment.fb_pixel) this.pixel.initialize();
   }
   is_requesting = true;
@@ -117,6 +119,10 @@ export class PlayerRegistrationComponent implements OnInit, OnChanges {
     });
 
     this.doSearchClubs("");
+  }
+
+  getSystemName(){
+    this.default_singleton.getDefaults().system_name;
   }
 
   getDefaults(callback:any = null){

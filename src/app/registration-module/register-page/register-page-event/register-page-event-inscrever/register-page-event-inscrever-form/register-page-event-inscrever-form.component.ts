@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PixelService } from 'ngx-pixel';
 import { build_environment } from 'src/environments/build/build-environment';
+import { DefaultSingleton } from 'src/app/_singleton/default';
 
 @Component({
   selector: 'app-register-page-event-inscrever-form',
@@ -29,6 +30,7 @@ export class RegisterPageEventInscreverFormComponent implements OnInit {
   faSpin = faSyncAlt;
 
   form_started = false;
+  default_singleton:DefaultSingleton;
   constructor(
     private register_event_controller:RegisterEventController,
     private register_event_country_controller:RegisterEventCountryController,
@@ -40,6 +42,7 @@ export class RegisterPageEventInscreverFormComponent implements OnInit {
 
     // private pixel: PixelService
     ) {
+      this.default_singleton = DefaultSingleton.getInstance();
       // if(build_environment.fb_pixel) this.pixel.initialize();
     }
   @Input()
@@ -113,7 +116,7 @@ export class RegisterPageEventInscreverFormComponent implements OnInit {
         if(!this.accepts.policy){
           Swal.fire({
             title: 'Erro!',
-            text: "Você deve aceitar os termos de uso e política de privacidade da plataforma XadrezSuíço para poder se inscrever neste evento.",
+            text: `Você deve aceitar os termos de uso e política de privacidade da plataforma ${this.default_singleton.defaults.system_name!!} para poder se inscrever neste evento.`,
             icon: 'error',
             confirmButtonText: 'Fechar'
           });
@@ -206,6 +209,10 @@ export class RegisterPageEventInscreverFormComponent implements OnInit {
     this.setClubFromPlayer();
 
     this.parseCategoriesToSelect2();
+  }
+
+  getSystemName(){
+    this.default_singleton.getDefaults().system_name;
   }
 
   checkIfPlayerCityIsntNull(){
