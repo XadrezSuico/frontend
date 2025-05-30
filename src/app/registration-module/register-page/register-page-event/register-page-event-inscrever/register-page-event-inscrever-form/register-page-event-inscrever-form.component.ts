@@ -211,8 +211,9 @@ export class RegisterPageEventInscreverFormComponent implements OnInit {
     this.parseCategoriesToSelect2();
   }
 
-  getSystemName(){
-    this.default_singleton.getDefaults().system_name;
+  getSystemName():string|boolean|undefined{
+
+    return this.default_singleton.getDefaults().system_name;
   }
 
   checkIfPlayerCityIsntNull(){

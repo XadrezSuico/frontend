@@ -121,8 +121,9 @@ export class PlayerRegistrationComponent implements OnInit, OnChanges {
     this.doSearchClubs("");
   }
 
-  getSystemName(){
-    this.default_singleton.getDefaults().system_name;
+  getSystemName():string|boolean|undefined{
+
+    return this.default_singleton.getDefaults().system_name;
   }
 
   getDefaults(callback:any = null){
