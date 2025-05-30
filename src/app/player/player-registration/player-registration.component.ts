@@ -21,6 +21,7 @@ import { PlayerClub } from '../_interfaces/player-club';
 import { DefaultSingleton } from 'src/app/_singleton/default';
 import { XadrezSuicoTitleService } from 'src/app/_services/title.service';
 import { PixelService } from 'ngx-pixel';
+import { build_environment } from 'src/environments/build/build-environment';
 
 @Component({
   selector: 'app-player-registration',
@@ -54,9 +55,9 @@ export class PlayerRegistrationComponent implements OnInit, OnChanges {
 
     private title_service:XadrezSuicoTitleService,
 
-    private pixel: PixelService
+    // private pixel: PixelService
   ) {
-    this.pixel.initialize();
+    // if(build_environment.fb_pixel) this.pixel.initialize();
   }
   is_requesting = true;
 
@@ -176,7 +177,7 @@ export class PlayerRegistrationComponent implements OnInit, OnChanges {
       if(response.result){
 
         // FB PIXEL
-        this.pixel.trackCustom('NewPlayer');
+        // this.pixel.trackCustom('NewPlayer');
 
         this.player = response.player;
 

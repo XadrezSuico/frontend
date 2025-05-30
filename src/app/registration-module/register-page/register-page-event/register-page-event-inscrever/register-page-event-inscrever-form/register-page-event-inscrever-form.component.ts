@@ -17,6 +17,7 @@ import { RegisterEventController } from 'src/app/registration-module/_controller
 import { environment } from 'src/environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PixelService } from 'ngx-pixel';
+import { build_environment } from 'src/environments/build/build-environment';
 
 @Component({
   selector: 'app-register-page-event-inscrever-form',
@@ -37,9 +38,9 @@ export class RegisterPageEventInscreverFormComponent implements OnInit {
 
     private modalService: NgbModal,
 
-    private pixel: PixelService
+    // private pixel: PixelService
     ) {
-      this.pixel.initialize();
+      // if(build_environment.fb_pixel) this.pixel.initialize();
     }
   @Input()
   event!:EventPublic;
@@ -140,7 +141,7 @@ export class RegisterPageEventInscreverFormComponent implements OnInit {
           let timerInterval:number;
           if(response.response){
             // FB PIXEL
-            this.pixel.trackCustom('PlayerRegistered');
+            // this.pixel.trackCustom('PlayerRegistered');
 
             let html = "<strong>Sua inscrição foi recebida!</strong><hr/>";
             html = html.concat("Você receberá em no máximo 30 minutos uma mensagem no endereço de e-mail do cadastro com a confirmação do recebimento da inscrição para este evento.<hr/>");

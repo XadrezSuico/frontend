@@ -11,16 +11,30 @@ h1{
 .btn-action{
   margin-right: 0.5rem;
 }
-
-.event-actions{
-  .nav-link{
+.event-actions.success {
+  .nav-link {
     border: 2px solid #00a65a;
     color: #00a65a;
     margin-right: 0.5rem;
   }
-  .nav-link.active{
+
+  .nav-link.active {
     border: 2px solid #00a65a;
     background: #00a65a;
+    color: #fff;
+  }
+}
+
+.event-actions.purple {
+  .nav-link {
+    border: 2px solid #555299;
+    color: #555299;
+    margin-right: 0.5rem;
+  }
+
+  .nav-link.active {
+    border: 2px solid #555299;
+    background: #555299;
     color: #fff;
   }
 }

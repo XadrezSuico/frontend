@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DefaultSingleton } from '../_singleton/default';
 
 @Component({
   selector: 'app-topbar',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopbarComponent implements OnInit {
 
-  constructor() { }
+  default_singleton:DefaultSingleton;
+  constructor() {
+    this.default_singleton = DefaultSingleton.getInstance();
+  }
 
   ngOnInit() {
+  }
+
+  getSystemName():string|boolean|undefined{
+
+    return this.default_singleton.getDefaults().system_name;
+  }
+  getSystemColor():string|boolean|undefined{
+
+    return this.default_singleton.getDefaults().system_color;
+  }
+  getCompanyName():string|boolean|undefined{
+
+    return this.default_singleton.getDefaults().company_user;
   }
 
 }

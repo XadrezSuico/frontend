@@ -1,4 +1,3 @@
-import { build_environment } from './../environments/build/build-environment';
 import { SharedModule } from './shared-module/shared-module.module';
 import { RegistrationModuleModule } from './registration-module/registration-module.module';
 import { NgModule } from '@angular/core';
@@ -16,6 +15,7 @@ import { PageModuleModule } from './page-module/page-module.module';
 import { PlayerModule } from './player/player.module';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { PixelModule } from 'ngx-pixel';
+import { build_environment } from 'src/environments/build/build-environment';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 

@@ -5,6 +5,8 @@ import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { faMapMarkerAlt, faStopwatch, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
+import { DefaultSingleton } from 'src/app/_singleton/default';
+import { DefaultController } from 'src/app/_controllers/default.controller';
 
 @Component({
   selector: 'app-register-page-event',
@@ -19,7 +21,11 @@ export class RegisterPageEventComponent implements OnInit, AfterViewInit {
   faSpin = faSyncAlt;
 
   is_requesting = true;
-  constructor(private register_event_controller:RegisterEventController, private route: ActivatedRoute, private title_service:XadrezSuicoTitleService) { }
+  default_singleton:DefaultSingleton;
+
+  constructor(private register_event_controller:RegisterEventController, private route: ActivatedRoute, private title_service:XadrezSuicoTitleService) {
+    this.default_singleton = DefaultSingleton.getInstance();
+  }
 
   uuid:string = "";
 
@@ -35,6 +41,9 @@ export class RegisterPageEventComponent implements OnInit, AfterViewInit {
     if(this.event){
       this.title_service.setTitle(this.event.info.title);
     }
+  }
+  getSystemClass(){
+    return this.default_singleton.getDefaults().system_class;
   }
 
   changePageByEvent(slug:string){

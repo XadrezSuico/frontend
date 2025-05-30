@@ -9,7 +9,7 @@
             {{event.info.short_description}}
           </div>
         </div>
-        <div class="event-actions mt-2">
+        <div class="event-actions mt-2 {{getSystemClass()}}">
           <ul ngbNav #nav="ngbNav" [(activeId)]="page_active" class="nav-pills">
             <li ngbNavItem [ngbNavItem]="'home'" *ngIf="event.tabs.includes('home')">
               <a ngbNavLink>Home</a>

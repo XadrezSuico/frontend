@@ -9,7 +9,24 @@
       color: #ccc;
   }
 }
+.bg-purple {
+  background-color: #555299;
+
+  color: #fff;
+
+  a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: #ccc;
+  }
+}
 
 nav{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.company_name{
+  font-size: 50%;
 }
